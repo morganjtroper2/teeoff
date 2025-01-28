@@ -1,34 +1,29 @@
 {
-  "name": "src",
+  "name": "teeoff",
   "version": "1.0.0",
-  "type": "module",
+  "description": "",
   "main": "index.js",
+  "type":"module",
   "scripts": {
-    "start": "concurrently \"npm run server\" \"npm run client\"",
-    "server": "cd src && node index.js",
-    "client": "cd public && npm run dev",
     "dev": "vite",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint .",
-    "build": "babel src -d dist"
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
   "dependencies": {
     "@tailwindcss/vite": "^4.0.0",
-    "cors": "^2.8.5",
-    "dotenv": "^16.4.7",
-    "express": "^4.21.2",
-    "mongoose": "^8.9.5",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
     "tailwindcss": "^4.0.0"
   },
   "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-preset-env": "^1.7.0",
-    "concurrently": "^8.2.2",
-    "eslint": "^8.57.0",
-    "nodemon": "^3.1.9"
+    "@types/react": "^19.0.8",
+    "@types/react-dom": "^19.0.3",
+    "@vitejs/plugin-react": "^4.3.4",
+    "typescript": "^5.7.3",
+    "vite": "^6.0.11"
   }
 }
