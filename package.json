@@ -15,7 +15,6 @@
   "license": "ISC",
   "dependencies": {
     "@tailwindcss/vite": "^4.0.0",
-<<<<<<< HEAD
     "@types/bcrypt": "^5.0.2",
     "@types/express": "^5.0.0",
     "@types/sequelize": "^4.28.20",
@@ -26,12 +25,8 @@
     "react-dom": "^19.0.0",
     "sequelize": "^6.37.5",
     "tailwindcss": "^4.0.0"
-=======
     "framer-motion": "^12.0.6",
     "node": "^18.20.6",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0"
->>>>>>> main
   },
   "devDependencies": {
     "@types/jsonwebtoken": "^9.0.8",
