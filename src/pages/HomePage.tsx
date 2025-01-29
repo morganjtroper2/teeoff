@@ -8,7 +8,7 @@ export default function HomePage() {
 
   return (
     <>
-    <div className="min-h-screen bg-gray-100">
+    <div className="min-h-screen bg-green-50">
       {/* Header */}
       <header className="flex justify-between items-center p-8 bg-white shadow-md">
         <h1 className="text-4xl font-bold text-green-700 mr-10">Tee BOX</h1>
