@@ -1,10 +1,10 @@
 import React from "react";
+import HomePage from "./pages/HomePage";
 
-export default function App() {
-  return (
-    <>
-     <h1>Tee OFF is working WOW</h1>
-     <h2>My best golf hits</h2>
-    </>
-  );
-}
+const App: React.FC = () => {
+  return <HomePage />;
+};
+
+
+export default App;
+
