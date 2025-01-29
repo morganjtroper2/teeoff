@@ -14,15 +14,18 @@ export default function HomePage() {
         <h1 className="text-4xl font-bold text-green-700 mr-10">Tee BOX</h1>
         <nav>
           <ul className="flex space-x-2">
-            <li><a href="#" className="text-2xl text-gray-700 hover:text-green-600">Homepage | </a></li>
-            <li><a href="#" className="text-2xl text-gray-700 hover:text-green-600">Golf Courses |</a></li>
-            <li><a href="#" className="text-2xl text-gray-700 hover:text-green-600">Hotel |</a></li>
+            <li><a href="#" className="text-2xl text-gray-700 hover:text-green-600">Homepage</a></li>
+            <a href="#" className="text-2xl">|</a>
+            <li><a href="#" className="text-2xl text-gray-700 hover:text-green-600">Golf Courses</a></li>
+            <a href="#" className="text-2xl">|</a>
+            <li><a href="#" className="text-2xl text-gray-700 hover:text-green-600">Hotel</a></li>
+            <a href="#" className="text-2xl">|</a>
             <li><a href="#" className="text-2xl text-gray-700 hover:text-green-600">Flights</a></li>
           </ul>
         </nav>
 
          {/* Login Button */}
-         <button className="ml-auto px-4 py-2 bg-green-700 text-white rounded-md hover:bg-green-700">
+         <button className="ml-auto px-4 py-2 bg-green-700 text-white rounded-md hover:bg-green-700 hover:outline hover:outline-2 hover:outline-black">
           Login
         </button>
 
@@ -32,7 +35,7 @@ export default function HomePage() {
           placeholder="Search..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          className="px-4 py-2 border rounded-md focus:outline-none focus:ring focus:border-green-400"
+          className="px-4 py-2 border rounded-md focus:outline-none focus:ring focus:border-green-400 hover:outline hover:outline-2 hover:outline-black"
         />
       </header>
 
@@ -43,7 +46,7 @@ export default function HomePage() {
             <motion.div
               key={index}
               whileHover={{ scale: 1.05 }}
-              className="bg-white p-25 shadow-lg rounded-xl w-100 text-center"
+              className="bg-white p-25 shadow-lg rounded-xl w-100 text-center hover:outline hover:outline-2 hover:outline-black"
             >
               <h2 className="text-3xl font-semibold text-green-700">{title}</h2>
               <p className="text-gray-600 mt-7">Explore the best {title.toLowerCase()} for your trip.</p>
