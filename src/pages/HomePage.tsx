@@ -2,6 +2,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import React from "react";
 import LoginPage from "./LoginPage";
+import DarkToggle from "../Components/DarkMode"
 
 export default function HomePage() {
   const [search, setSearch] = useState("");
@@ -9,20 +10,21 @@ export default function HomePage() {
 
   return (
     <>
-      <div className="min-h-screen bg-green-50">
+      <div className="min-h-screen bg-green-50 dark:bg-emerald-950">
         {/* Header */}
-        <header className="flex justify-between items-center p-8 bg-white shadow-md">
+        <header className="flex justify-between items-center p-8 bg-white shadow-md dark:bg-zinc-950">
           <h1 className="text-4xl font-bold text-green-700 mr-10">Tee BOX</h1>
           <nav>
             <ul className="flex space-x-2">
-              <li><a href="#" className="text-2xl text-gray-700 hover:text-green-600">Homepage</a></li>
+              <li><a href="#" className="text-2xl text-gray-700 hover:text-green-600 dark:text-slate-300 dark:hover:text-emerald-800">Homepage</a></li>
               <span className="text-2xl">|</span>
-              <li><a href="#" className="text-2xl text-gray-700 hover:text-green-600">Golf Courses</a></li>
+              <li><a href="#" className="text-2xl text-gray-700 hover:text-green-600 dark:text-slate-300 dark:hover:text-emerald-800">Golf Courses</a></li>
               <span className="text-2xl">|</span>
-              <li><a href="#" className="text-2xl text-gray-700 hover:text-green-600">Hotel</a></li>
+              <li><a href="#" className="text-2xl text-gray-700 hover:text-green-600 dark:text-slate-300 dark:hover:text-emerald-800">Hotel</a></li>
               <span className="text-2xl">|</span>
-              <li><a href="#" className="text-2xl text-gray-700 hover:text-green-600">Flights</a></li>
+              <li><a href="#" className="text-2xl text-gray-700 hover:text-green-600 dark:text-slate-300 dark:hover:text-emerald-800">Flights</a></li>
             </ul>
+            <DarkToggle />
           </nav>
 
           {/* Login Button */}
@@ -50,10 +52,10 @@ export default function HomePage() {
               <motion.div
                 key={index}
                 whileHover={{ scale: 1.05 }}
-                className="bg-white p-15 shadow-lg rounded-3xl w-100 text-center hover:outline hover:outline-2 hover:outline-black"
+                className="bg-white p-15 shadow-lg rounded-3xl w-100 text-center hover:outline hover:outline-2 hover:outline-black dark:bg-zinc-950"
               >
                 <h2 className="text-3xl font-semibold text-green-700">{title}</h2>
-                <p className="text-gray-600 mt-4">Explore the best {title.toLowerCase()} for your trip.</p>
+                <p className="text-gray-600 mt-4 dark:text-slate-300">Explore the best {title.toLowerCase()} for your trip.</p>
               </motion.div>
             ))}
           </div>

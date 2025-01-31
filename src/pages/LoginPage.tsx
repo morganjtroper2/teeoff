@@ -27,18 +27,18 @@ const LoginPage: React.FC<{ onClose: () => void }> = ({ onClose }) => {
       transition={{ duration: 0.5 }}
       className="relative z-10 w-full max-w-md p-6"
     >
-      <Card className="p-6 shadow-xl bg-white border border-black rounded-2xl">
+      <Card className="p-6 shadow-xl bg-white border border-black rounded-2xl dark:bg-zinc-950">
         <CardContent className="space-y-4 relative">
           {/* Positioned Exit Button */}
           <button
-            className="absolute top-2 right-2 text-xl font-bold text-gray-500 hover:text-gray-700"
+            className="absolute top-2 right-2 text-xl font-bold text-gray-500 hover:text-gray-700 dark:text-slate-300 dark:hover:text-slate-100"
             onClick={onClose}  // Close the modal when clicked
           >
             X
           </button>
-          <h2 className="text-2xl font-bold text-center text-gray-800">Login</h2>
+          <h2 className="text-2xl font-bold text-center text-gray-800 dark:text-slate-300">Login</h2>
           <div>
-            <Label className="text-gray-700">Username</Label>
+            <Label className="text-gray-700 dark:text-slate-300">Username</Label>
             <Input
               type="text"
               placeholder="Enter your username"
@@ -48,7 +48,7 @@ const LoginPage: React.FC<{ onClose: () => void }> = ({ onClose }) => {
             />
           </div>
           <div>
-            <Label className="text-gray-700">Password</Label>
+            <Label className="text-gray-700 dark:text-slate-300">Password</Label>
             <Input
               type="password"
               placeholder="Enter your password"
@@ -60,7 +60,7 @@ const LoginPage: React.FC<{ onClose: () => void }> = ({ onClose }) => {
           <Button className="w-full mt-4" onClick={handleLogin}>
             Login
           </Button>
-          <p className="text-center text-sm text-gray-600">
+          <p className="text-center text-sm text-gray-600 dark:text-slate-300">
             Don't have an account?{" "}
             <a href="#" className="text-blue-500 hover:underline">
               Sign Up
