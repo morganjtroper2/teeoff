@@ -21,56 +21,57 @@ const LoginPage: React.FC<{ onClose: () => void }> = ({ onClose }) => {
   };
 
   return (
-    <motion.div
-      initial={{ opacity: 0, scale: 0.9 }}
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 0.5 }}
-      className="relative z-10 w-full max-w-md p-6"
-    >
-      <Card className="p-6 shadow-xl bg-white border border-black rounded-2xl dark:bg-zinc-950">
-        <CardContent className="space-y-4 relative">
-          {/* Positioned Exit Button */}
-          <button
-            className="absolute top-2 right-2 text-xl font-bold text-gray-500 hover:text-gray-700 dark:text-slate-300 dark:hover:text-slate-100"
-            onClick={onClose}  // Close the modal when clicked
-          >
-            X
-          </button>
-          <h2 className="text-2xl font-bold text-center text-gray-800 dark:text-slate-300">Login</h2>
-          <div>
-            <Label className="text-gray-700 dark:text-slate-300">Username</Label>
-            <Input
-              type="text"
-              placeholder="Enter your username"
-              className="mt-1"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-            />
-          </div>
-          <div>
-            <Label className="text-gray-700 dark:text-slate-300">Password</Label>
-            <Input
-              type="password"
-              placeholder="Enter your password"
-              className="mt-1"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-          </div>
-          <Button className="w-full mt-4" onClick={handleLogin}>
-            Login
-          </Button>
-          <p className="text-center text-sm text-gray-600 dark:text-slate-300">
-            Don't have an account?{" "}
-            <a href="#" className="text-blue-500 hover:underline">
-              Sign Up
-            </a>
-          </p>
-        </CardContent>
-      </Card>
-    </motion.div>
+    <div className="fixed inset-0 flex items-center justify-center bg-black/50 z-50">
+      <motion.div
+        initial={{ opacity: 0, scale: 0.9 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.5 }}
+        className="relative w-full max-w-md p-6"
+      >
+        <Card className="p-6 shadow-xl bg-white border border-black rounded-2xl">
+          <CardContent className="space-y-4 relative">
+            {/* Positioned Exit Button */}
+            <button
+              className="absolute top-2 right-2 text-xl font-bold text-gray-500 hover:text-gray-700"
+              onClick={onClose} // Close the modal when clicked
+            >
+              X
+            </button>
+            <h2 className="text-2xl font-bold text-center text-gray-800">Login</h2>
+            <div>
+              <Label className="text-gray-700">Username</Label>
+              <Input
+                type="text"
+                placeholder="Enter your username"
+                className="mt-1"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+              />
+            </div>
+            <div>
+              <Label className="text-gray-700">Password</Label>
+              <Input
+                type="password"
+                placeholder="Enter your password"
+                className="mt-1"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </div>
+            <Button className="w-full mt-4" onClick={handleLogin}>
+              Login
+            </Button>
+            <p className="text-center text-sm text-gray-600">
+              Don't have an account?{" "}
+              <a href="#" className="text-blue-500 hover:underline">
+                Sign Up
+              </a>
+            </p>
+          </CardContent>
+        </Card>
+      </motion.div>
+    </div>
   );
 };
 
 export default LoginPage;
-
