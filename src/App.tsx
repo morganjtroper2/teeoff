@@ -5,6 +5,7 @@ import GolfCoursesPage from "./pages/GolfCoursesPage";
 import HotelPage from "./pages/HotelPage";
 import FlightsPage from "./pages/FlightsPage";
 import Layout from "./Components/Layout"; // Import Layout
+import ProfilePage from "./pages/ProfilePage";
 
 const App: React.FC = () => {
   return (
@@ -15,6 +16,7 @@ const App: React.FC = () => {
           <Route path="/golf-courses" element={<GolfCoursesPage />} />
           <Route path="/hotels" element={<HotelPage />} />
           <Route path="/flights" element={<FlightsPage />} />
+          <Route path="/profile" element={<ProfilePage />} />
         </Routes>
       </Layout>
     </Router>
