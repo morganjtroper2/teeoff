@@ -2,71 +2,82 @@ import React, { useEffect, useState } from "react";
 
 interface GolfCourse {
   id: number;
-  name: string;
-  image: string;
+  club_name: string;
+  course_name: string;
+  location: {
+    city: string;
+    state: string;
+  };
 }
 
 const GolfCoursesPage: React.FC = () => {
   const [golfCourses, setGolfCourses] = useState<GolfCourse[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const [favorites, setFavorites] = useState<number[]>([]);
 
   useEffect(() => {
     const fetchGolfCourses = async () => {
       try {
-        const response = await fetch("https://api.pexels.com/v1/search?query=golf", {
-          headers: {
-            Authorization: "YOUR_PEXELS_API_KEY", // Replace with your API key
-          },
-        });
-
+        const response = await fetch("http://localhost:5001/api/golf-courses");
         if (!response.ok) throw new Error("Failed to fetch data");
 
         const data = await response.json();
-        const courses = data.photos.slice(0, 6).map((photo: any, index: number) => ({
-          id: index + 1,
-          name: `Golf Course ${index + 1}`,
-          image: photo.src.medium,
-        }));
+        console.log("Received Golf Course Data:", data);
 
-        setGolfCourses(courses);
+        setGolfCourses(data);
+
+        // Load favorites from localStorage
+        const storedFavorites = JSON.parse(localStorage.getItem("favorites") || "[]");
+        setFavorites(storedFavorites);
       } catch (error) {
-        setError("Error fetching golf courses. Please try again.");
-      } finally {
-        setLoading(false);
+        console.error("Golf Courses API Error:", error);
       }
     };
 
     fetchGolfCourses();
   }, []);
 
+  // Function to toggle favorites
+  const toggleFavorite = (id: number) => {
+    let updatedFavorites;
+    if (favorites.includes(id)) {
+      updatedFavorites = favorites.filter((favId) => favId !== id);
+    } else {
+      updatedFavorites = [...favorites, id];
+    }
+
+    setFavorites(updatedFavorites);
+    localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
+  };
+
   return (
     <div className="flex flex-col items-center p-8">
       <h1 className="text-4xl font-bold text-green-800 mb-8">Golf Courses</h1>
 
-      {loading && <p className="text-gray-600">Loading golf courses...</p>}
-      {error && <p className="text-red-500">{error}</p>}
+      {golfCourses.length === 0 && <p className="text-gray-600">Loading golf courses...</p>}
 
-      {!loading && !error && (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {golfCourses.map((course) => (
-            <div
-              key={course.id}
-              className="bg-white rounded-2xl shadow-lg overflow-hidden transform hover:scale-105 transition duration-300"
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {golfCourses.map((course) => (
+          <div
+            key={course.id}
+            className={`bg-white rounded-2xl shadow-lg overflow-hidden transform hover:scale-105 transition duration-300 p-4 relative ${
+              favorites.includes(course.id) ? "border-4 border-yellow-500" : ""
+            }`}
+          >
+            {/* Star button positioned at bottom-right */}
+            <button
+              onClick={() => toggleFavorite(course.id)}
+              className={`absolute bottom-2 right-2 text-2xl p-1 transition-all duration-300 ${
+                favorites.includes(course.id) ? "text-yellow-500" : "text-gray-400 hover:text-gray-600"
+              }`}
             >
-              <img
-                src={course.image}
-                alt={course.name}
-                className="w-full h-48 object-cover"
-                onError={(e) => (e.currentTarget.src = "https://via.placeholder.com/400x300?text=Golf+Course")}
-              />
-              <div className="p-4 text-center">
-                <h2 className="text-xl font-semibold text-gray-800">{course.name}</h2>
-              </div>
-            </div>
-          ))}
-        </div>
-      )}
+              {favorites.includes(course.id) ? "★" : "☆"}
+            </button>
+
+            <h2 className="text-xl font-semibold text-gray-800">{course.club_name}</h2>
+            <p className="text-gray-600">{course.location.city}, {course.location.state}</p>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
