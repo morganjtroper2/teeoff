@@ -40,6 +40,12 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                 Flights
               </Link>
             </li>
+            <span className="text-2xl dark:text-white">|</span>
+            <li>
+              <Link to="/profile" className="text-2xl text-gray-700 hover:text-green-600 dark:text-slate-300 dark:hover:text-emerald-800">
+                Profile
+              </Link>
+            </li>
           </ul>
           <DarkToggle /> {/* Dark Mode Toggle Button */}
         </nav>
